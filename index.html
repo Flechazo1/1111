@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-image: url(./QQ图片.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 10px;
+        }
+        .box{
+            width: 60px;
+            height: 50px;
+            line-height: 50px;
+            margin-left: 15px;
+            text-align: center;
+            background-color: rgb(57, 57, 57);
+            color: white;
+            border: 1px solid rgb(57, 57, 57);
+        }
+        .time{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 270px;
+            height: 55px;
+        }
+        .main{
+            width: 270px;
+            height: 200px;
+            margin: 200px auto;
+        }
+        input{
+            height: 20px;
+            font-size: 15px;
+            margin-left: 30px;
+            outline: none;
+            margin-bottom: 10px;
+            float: left;
+        }
+        button{
+            float: left;
+            height: 25px;
+            width: 40px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <input placeholder="请输入时间,例:18:50:00" type="text">
+        <button id="btn">确定</button>
+        <div class="time">
+            <div class="box" id="h">1</div>
+            <div class="box" id="m">2</div>
+            <div class="box" id="s">3</div>
+        </div>
+    </div>
+    <script>
+        var btn=document.getElementById('btn');
+        var input=document.querySelector('input');
+        var t=0,time1;
+        btn.onclick=function(){
+            if(input.value=='')
+            alert('请输入时间');
+            else{
+                t=input.value;
+                time1=+new Date('2022-08-03'+' '+t);
+                if(isNaN(time1)){
+                    alert('输入有误,请检查是否是时间错误或者冒号中英文错误');
+                    return 0;
+                }
+                
+                input.value='';
+                var sbox=document.getElementById('s');
+                var mbox=document.getElementById('m');
+                var hbox=document.getElementById('h');
+                var time3=+new Date();
+                if(time1-time3<0){
+                    alert('输入时间小于当前时间,请重新输入');
+                    return 0;
+                }
+                getTime();
+                var timer=setInterval(getTime,1000);
+                function getTime(){
+                var time2=+new Date();
+                var s1=(time1-time2)/1000;
+                var s=parseInt(s1%60);
+                s=s<10?'0'+s:s;
+                var m=parseInt(s1/60%60);
+                m=m<10?'0'+m:m;
+                var h=parseInt(s1/3600%60);
+                h=h<10?'0'+h:h;
+                sbox.innerHTML=s;
+                mbox.innerHTML=m;
+                hbox.innerHTML=h;
+                if(h==='00'&&m==='00'&&s==='00'){
+                clearInterval(timer);
+                alert('小傻瓜');
+                }
+
+                }
+            }
+        }
+    </script>
+</body>
+</html>

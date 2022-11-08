@@ -43,38 +43,17 @@
 		}
  
 		function getColor(){
-			var val = Math.random() * 10;
-			if(val > 0 && val <= 1){
-				return '#00f';
-			} else if(val > 1 && val <= 2){
-				return '#f00';
-			} else if(val > 2 && val <= 3){
-				return '#0f0';
-			} else if(val > 3 && val <= 4){
-				return '#368';
-			} else if(val > 4 && val <= 5){
-				return '#666';
-			} else if(val > 5 && val <= 6){
-				return '#333';
-			} else if(val > 6 && val <= 7){
-				return '#f50';
-			} else if(val > 7 && val <= 8){
-				return '#e96d5b';
-			} else if(val > 8 && val <= 9){
-				return '#5be9e9';
-			} else {
-				return '#d41d50';
-			}
+			return 'pink';
 		}
  
 		function getText(){
-			var val = Math.random() * 10;
-			if(val > 1 && val <= 3){
-				return 'always';
-			} else if(val > 3 && val <= 5){
+			var val = Math.floor(Math.random()*6);
+			if(val >=0  && val < 2){
+				return '你要';
+			} else if(val >= 2 && val < 4){
 				return '高梦蝶';
 			} else{
-				return 'taylor swift';
+				return '天天开心';
 			} 
 		}
  
@@ -88,8 +67,8 @@
  
 			// 偏移量
 			this.vel = {
-				x: (Math.random() - .5) * 5,
-				y: (Math.random() - .5) * 5
+				x: (Math.random() - .5) * 4,
+				y: (Math.random() - .5) * 4
 			}
  
 			this.initialW = wW * .5;
@@ -105,9 +84,9 @@
 			this.text = getText();
  
 			this.fvel = {
-				x: (Math.random() - .5) * 5,
-				y: (Math.random() - .5) * 5,
-				f: (Math.random() - .5) * 2
+				x: (Math.random() - .5) * 3,
+				y: (Math.random() - .5) * 3,
+				f: (Math.random() - .5) * 1
 			}
 		}
  
